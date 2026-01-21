@@ -43,8 +43,8 @@ async function getJoke(type){
     const jokeapi_call = await fetch("https://official-joke-api.appspot.com/jokes/" + type + "/random")
     const jokeapi_json = await jokeapi_call.json()
 
-    const jokeSetup = jokeapi_json.setup
-    const jokePunchline = jokeapi_json.punchline
+    const jokeSetup = jokeapi_json[0].setup
+    const jokePunchline = jokeapi_json[0].punchline
     
     const joke = document.getElementById("jokeSetup")
     joke.innerText = jokeSetup
