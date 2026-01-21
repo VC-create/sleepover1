@@ -26,7 +26,7 @@ async function showJoke(){
 
 }
 
-async function getTypeJoke(){
+/*async function getTypeJoke(){
     const type = document.getElementById("type")
     const jokeType = type.value;
     const compareValue = type.localeCompare("general")
@@ -37,10 +37,10 @@ async function getTypeJoke(){
     else{
         getJoke(jokeType)
     }
-}
+}*/
 
 async function getJoke(type){
-    const jokeapi_call = await fetch(`https://official-joke-api.appspot.com/jokes/${type}/random`)
+    const jokeapi_call = await fetch("https://official-joke-api.appspot.com/jokes/" + type + "/random")
     const jokeapi_json = await jokeapi_call.json()
 
     const jokeSetup = jokeapi_json.setup
