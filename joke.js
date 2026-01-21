@@ -1,5 +1,5 @@
 //call the function when the page loads
-document.addEventListener("DOMContentLoaded", showJoke)
+//document.addEventListener("DOMContentLoaded", showJoke)
 
 //get the joke from the api and need to turn the raw data into json
 //need to turn it into json because you can't work with it in its raw form
