@@ -25,3 +25,30 @@ async function showJoke(){
     answer.innerText = jokePunchline
 
 }
+
+async function getTypeJoke(){
+    const type = document.getElementById("type")
+    const jokeType = type.value;
+    const compareValue = type.localeCompare("general")
+    if(jokeType!=="general" || jokeType!=="programming" || jokeType!=="dad" || jokeType!=="knock-knock"){
+        errorMessage = document.getElementById("error")
+        errorMessage.innerText = "Please enter one of the accepted types only!"
+    }
+    else{
+        getJoke(jokeType)
+    }
+}
+
+async function getJoke(type){
+    const jokeapi_call = await fetch(`https://official-joke-api.appspot.com/jokes/${type}/random`)
+    const jokeapi_json = await jokeapi_call.json()
+
+    const jokeSetup = jokeapi_json.setup
+    const jokePunchline = jokeapi_json.punchline
+    
+    const joke = document.getElementById("jokeSetup")
+    joke.innerText = jokeSetup
+
+    const answer = document.getElementById("jokePunchline")
+    answer.innerText = jokePunchline
+}
