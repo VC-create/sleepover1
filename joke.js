@@ -39,6 +39,7 @@ async function showJoke(){
     }
 }*/
 
+let timer
 async function getJoke(type){
     const jokeapi_call = await fetch("https://official-joke-api.appspot.com/jokes/" + type + "/random")
     const jokeapi_json = await jokeapi_call.json()
@@ -51,7 +52,9 @@ async function getJoke(type){
 
     const answer = document.getElementById("jokePunchline")
     answer.textContent=""
+
     clearTimeout(timer)
     timer = setTimeout(() => {
-        answer.textContent = jokePunchline}, 2000)
+        console.log("timer!")
+        answer.textContent = jokePunchline;}, 2000);
 }
