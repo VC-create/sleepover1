@@ -47,8 +47,11 @@ async function getJoke(type){
     const jokePunchline = jokeapi_json[0].punchline
     
     const joke = document.getElementById("jokeSetup")
-    joke.innerText = jokeSetup
+    joke.textContent = jokeSetup
 
     const answer = document.getElementById("jokePunchline")
-    answer.innerText = jokePunchline
+    answer.textContent=""
+    clearTimeout(timer)
+    timer = setTimeout(() => {
+        answer.textContent = jokePunchline}, 2000)
 }
