@@ -19,27 +19,13 @@ async function showJoke(){
     const joke = document.getElementById("jokeSetup")
     joke.innerText = jokeSetup
 
+    const answer = document.getElementById("jokePunchline")
     //have a variable that represents the jokepunchline, called answer
     //change the text of that element to have the jokepunchline
-    const answer = document.getElementById("jokePunchline")
-    answer.innerText = jokePunchline
+    setTimeout(() => answer.textContent = jokePunchline, 2000)
 
 }
 
-/*async function getTypeJoke(){
-    const type = document.getElementById("type")
-    const jokeType = type.value;
-    const compareValue = type.localeCompare("general")
-    if(jokeType!=="general" || jokeType!=="programming" || jokeType!=="dad" || jokeType!=="knock-knock"){
-        errorMessage = document.getElementById("error")
-        errorMessage.innerText = "Please enter one of the accepted types only!"
-    }
-    else{
-        getJoke(jokeType)
-    }
-}*/
-
-let timer
 async function getJoke(type){
     const jokeapi_call = await fetch("https://official-joke-api.appspot.com/jokes/" + type + "/random")
     const jokeapi_json = await jokeapi_call.json()
@@ -53,8 +39,12 @@ async function getJoke(type){
     const answer = document.getElementById("jokePunchline")
     answer.textContent=""
 
-    clearTimeout(timer)
-    timer = setTimeout(() => {
-        console.log("timer!")
-        answer.textContent = jokePunchline;}, 2000);
+    //this waits 2 seconds, because 2000 ms = 2 s
+    //() => {} this syntax represents callback, meaning an arrow function
+    //think of it like the "=>" points to the behavior and whatver is in the {} will excecute
+    //setTimeout(function, delay)
+    //here, function = "() => answer.textContent = jokePunchline"
+    //don't need brackets because it's a single line
+    //delay = 2000
+   setTimeout(() => answer.textContent = jokePunchline, 2000)
 }
