@@ -21,13 +21,13 @@ async function showJoke(){
     //have a variable that represents the jokesetup, called joke
     //change the text of that element to have the jokesetup
     const joke = document.getElementById("jokeSetup")
-    joke.textContent = jokeSetup
+    joke.textContent = "Setup: " + jokeSetup
 
     const answer = document.getElementById("jokePunchline")
-    answer.textContent = ""
+    answer.textContent = "Answer: "
     //have a variable that represents the jokepunchline, called answer
     //change the text of that element to have the jokepunchline
-    timer = setTimeout(() => answer.textContent = jokePunchline, 1000)
+    timer = setTimeout(() => answer.textContent = "Answer: " + jokePunchline, 1000)
 
 }
 
@@ -42,10 +42,10 @@ async function getJoke(type){
     const jokePunchline = jokeapi_json[0].punchline
     
     const joke = document.getElementById("jokeSetup")
-    joke.textContent = jokeSetup
+    joke.textContent = "Setup: " + jokeSetup
 
     const answer = document.getElementById("jokePunchline")
-    answer.textContent=""
+    answer.textContent="Answer: "
 
     //this waits 2 seconds, because 2000 ms = 2 s
     //() => {} this syntax represents callback, meaning an arrow function
@@ -54,6 +54,6 @@ async function getJoke(type){
     //here, function = "() => answer.textContent = jokePunchline"
     //don't need brackets because it's a single line
     //delay = 2000
-   timer = setTimeout(() => answer.textContent = jokePunchline, 1000)
+   timer = setTimeout(() => answer.textContent = "Answer: " + jokePunchline, 1000)
 }
 
