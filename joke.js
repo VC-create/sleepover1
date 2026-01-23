@@ -1,6 +1,8 @@
 let timer
 
 async function showJoke(){
+    //this clears any timer that's running so that the punchline won't show up
+    //makes it so that any punchline that was going to show up, let's say from a different image, won't show up anymore
     if (timer){
         clearTimeout(timer)
     }
