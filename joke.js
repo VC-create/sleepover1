@@ -17,9 +17,10 @@ async function showJoke(){
     //have a variable that represents the jokesetup, called joke
     //change the text of that element to have the jokesetup
     const joke = document.getElementById("jokeSetup")
-    joke.innerText = jokeSetup
+    joke.textContent = jokeSetup
 
     const answer = document.getElementById("jokePunchline")
+    answer.textContent = ""
     //have a variable that represents the jokepunchline, called answer
     //change the text of that element to have the jokepunchline
     setTimeout(() => answer.textContent = jokePunchline, 2000)
