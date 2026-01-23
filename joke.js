@@ -56,3 +56,4 @@ async function getJoke(type){
     //delay = 2000
    timer = setTimeout(() => answer.textContent = jokePunchline, 1000)
 }
+
