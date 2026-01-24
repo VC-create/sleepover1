@@ -1,4 +1,4 @@
-body{
+.joke{
     background-image: url("images/bg.jpg");
      background-repeat: no-repeat;
      background-size: cover;
@@ -28,6 +28,7 @@ h4{
     color:black;
     width:50%;
     font-size:20px;
+    margin-left:70px;
     text-align:center;
 }
 
@@ -35,4 +36,29 @@ h4{
     display:block;
     margin:auto;
 }
+
+/*for home.html*/
+.home{
+    background-color:black;
+}
+
+h1{
+    color:white;
+    margin-top:200px;
+    font-size:90px;
+    margin-left:70px;
+    /*these next 4 lines are needed for the animation*/
+    /*overflow:hidden hides future letters, nowrap makes all the letters on the same line*/
+    /*width:100 ensures the animation goes through the whole text*/
+    overflow:hidden; 
+    width:100%;
+    white-space: nowrap;
+    animation: typing 11s;
+}
+@keyframes typing{
+    /*starts the animation from the first letter*/
+    /*basically the letters are just appearing*/
+    from {width:0%};
+}
+
 
