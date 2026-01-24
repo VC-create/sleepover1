@@ -29,7 +29,6 @@ h4{
     width:50%;
     font-size:20px;
     margin-left:70px;
-    text-align:center;
 }
 
 .med{
@@ -100,4 +99,12 @@ h1{
     }
 }
 
+.itemSecret{
+    margin-top:200px;
+}
+
+p{
+    background-color:white;
+    color:black;
+}
 
