@@ -57,3 +57,4 @@ async function getJoke(type){
    timer = setTimeout(() => answer.textContent = "Answer: " + jokePunchline, 1500)
 }
 
+
