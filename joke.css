@@ -61,21 +61,38 @@ h1{
     from {width:0%};
 }
 
-.button{
+.button-disabled{
     padding:10px;
     font-size:40px;
     background-color:white;
     color:black;
-    animation: fade 13s;
+    animation: fade 10s forwards;
     margin-left:45%;
     text-decoration:none;
+    font-family:fantasy;
+    cursor:not-allowed;
+    pointer-events:none;
+    display:inline-block;
+}
+
+.button-enabled{
+    padding:10px;
+    font-size:40px;
+    background-color:white;
+    color:black;
+    margin-left:45%;
+    text-decoration:none;
+    font-family:fantasy;
+    cursor:pointer;
+    pointer-events:auto;
+    display:inline-block;
 }
 
 @keyframes fade{
     0%{
         opacity:0;
     }
-    50%{
+    70%{
         opacity:0;
     }
     100%{

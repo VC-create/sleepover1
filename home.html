@@ -2,11 +2,20 @@
 <html>
     <head>
         <title>Jokes</title>
+        <script>
+        document.addEventListener("DOMContentLoaded", ()=>{
+        const switchPage = document.getElementById("switch");
+
+        switchPage.addEventListener("animationend", () => {
+            switchPage.classList.remove("button-disabled")
+            switchPage.classList.add("button-enabled")
+        });
+        })  
+    </script>
     </head>
     <body class="home">
         <link rel="stylesheet" href="joke.css">
-        <script src="joke.js"></script>
         <h1>PIRATES OF THE CARRIBEAN</h1>
-        <a class="button" href="joke.html">Enter</button>
+        <a id="switch" class="button-disabled" href="joke.html">Enter</a>
     </body>
 </html>
