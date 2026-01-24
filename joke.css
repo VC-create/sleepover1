@@ -16,16 +16,23 @@ body{
 }
 
 h3{
+    /*just centers the joke and medallion text*/
     text-align:center;
-    color:white;
-    text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px red;
+    background-color:white;
+    color:black;
 }
 
 h4{
+    /*for the joke types*/
     background-color:white;
     color:black;
     width:50%;
-    margin-left:70px;
     font-size:20px;
+    text-align:center;
+}
+
+.med{
+    display:block;
+    margin:auto;
 }
 
