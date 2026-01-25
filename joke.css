@@ -23,7 +23,7 @@ h3{
 }
 
 h4{
-    /*for the joke types*/
+    /*for the joke types text*/
     background-color:white;
     color:black;
     width:50%;
@@ -124,4 +124,10 @@ button{
     color:black;
     margin-left:47%;
     font-family:fantasy;
+}
+
+#random{
+    color:black;
+    background-color:white;
+    width:47%;
 }
