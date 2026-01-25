@@ -63,13 +63,13 @@ function switchPage(){
 }
 
 async function check(){
+    const jokes = document.getElementById('manyJokes')
     jokes.innerHTML = " "
     const number = Math.trunc(Number(document.querySelector('input').value))
     if (number >= 100 || number==0 || number<0){
         alert("Please pick a valid number, greater than 0 and less than 100.")
     }
     else if(Number.isFinite(number)){
-        const jokes = document.getElementById('manyJokes')
         const jokeapi_call = await fetch("https://official-joke-api.appspot.com/jokes/random/" + number)
         const jokeapi_json = await jokeapi_call.json()
         
