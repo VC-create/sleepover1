@@ -2,25 +2,15 @@
 <html>
     <head>
         <title>Jokes</title>
-        <script>
-        /*document.addEventListener("DOMContentLoaded", ()=>{
-        const switchPage = document.getElementById("switch");
-
-        switchPage.addEventListener("animationend", () => {
-            switchPage.classList.remove("button-disabled")
-            switchPage.classList.add("button-enabled")
-        });
-        })*/
-    </script>
     </head>
     <body class="joke">
         <link rel="stylesheet" href="joke.css">
+        <script src="joke.js"></script>
         <h1 id="random">The Black Pearl</h1>
         <h3>Enter the number of jokes you want in the textbox below</h3>
         <input type="text"></input>
         <button onclick="check()">Enter</button>
-        <h3 id="jokeSetup">Setup:</h3>
-        <h3 id="jokePunchline">Answer:</h3>
+        <div id="manyJokes"></div>
         <!--<img src="raggeti"></img>-->
     </body>
 </html>

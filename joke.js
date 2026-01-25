@@ -63,24 +63,34 @@ function switchPage(){
 }
 
 async function check(){
-    const number = document.querySelector('input')
-    if(Number.isFinite(number)){
-        if (number > 100){
+    const number = Number(document.querySelector('input').value)
+    if (number > 100){
         alert("Please pick a number less than 100")
-        }
-        if (number==0){
-            alert("Please pick a number greater than 0")
-        }
+    }
+    else if (number==0){
+        alert("Please pick a number greater than 0")
+    }
+    else if(Number.isFinite(number)){
+        const jokes = document.getElementById('manyJokes')
+        jokes.textContent = " "
         const jokeapi_call = await fetch("https://official-joke-api.appspot.com/jokes/random/" + number)
         const jokeapi_json = await jokeapi_call.json()
-        const jokeSetup = jokeapi_json[0].setup
-        const jokePunchline = jokeapi_json[0].punchline
-    
-        const joke = document.getElementById("jokeSetup")
-        joke.textContent = "Setup: " + jokeSetup
+        
+        //const joke = document.getElementById("jokeSetup")
+        //joke.textContent = "Setup: "
 
-        const answer = document.getElementById("jokePunchline")
-        answer.textContent = "Answer: " + jokePunchline
+        //const answer = document.getElementById("jokePunchline")
+        //answer.textContent = "Answer: "
+        
+        const i=0
+        while (i<number){
+            const jokeSetup = jokeapi_json[i].setup
+            const jokePunchline = jokeapi_json[i].punchline
+            jokes.textContent="Setup: " + jokeSetup + " Answer: " + answer 
+            //joke.textContent = "Setup: " + jokeSetup
+            //answer.textContent = "Answer: " + answer
+            i++
+        }
     }
     else{
         alert("Please enter a valid number")
