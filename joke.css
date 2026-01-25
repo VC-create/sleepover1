@@ -132,4 +132,9 @@ button{
     width:47%;
 }
 
-
+#manyJokes{
+    background-color:white;
+    color:black;
+    padding:10px;
+    margin-top:40px;
+}

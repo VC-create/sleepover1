@@ -64,7 +64,7 @@ function switchPage(){
 
 async function check(){
     const number = Number(document.querySelector('input').value)
-    if (number > 100){
+    if (number >= 100){
         alert("Please pick a number less than 100")
     }
     else if (number==0){
@@ -72,16 +72,23 @@ async function check(){
     }
     else if(Number.isFinite(number)){
         const jokes = document.getElementById('manyJokes')
-        jokes.textContent = " "
+        jokes.innerHTML = " "
         const jokeapi_call = await fetch("https://official-joke-api.appspot.com/jokes/random/" + number)
         const jokeapi_json = await jokeapi_call.json()
         
-        
+        //basically the jokes are in an array
+        //an array is denoted like []
+        //then the array has objects like {}
+        //so together its like [{}, {}, {}]
+        //so when you have [], its already in the array, then it just has to access the object at the index
+        //i = index, which object it needs to access
         let i=0
         while (i<number){
             let jokeSetup = jokeapi_json[i].setup
             let jokePunchline = jokeapi_json[i].punchline
-            jokes.textContent+= "Setup: " + jokeSetup + "\n" + " Answer: " + jokePunchline + "\n\n"
+            jokes.innerHTML+= 
+                "Setup: " + jokeSetup
+                " Answer: " + jokePunchline + "<br>"
             i++
         }
     }
