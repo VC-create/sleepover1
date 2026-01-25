@@ -76,19 +76,12 @@ async function check(){
         const jokeapi_call = await fetch("https://official-joke-api.appspot.com/jokes/random/" + number)
         const jokeapi_json = await jokeapi_call.json()
         
-        //const joke = document.getElementById("jokeSetup")
-        //joke.textContent = "Setup: "
-
-        //const answer = document.getElementById("jokePunchline")
-        //answer.textContent = "Answer: "
         
-        const i=0
+        let i=0
         while (i<number){
-            const jokeSetup = jokeapi_json[i].setup
-            const jokePunchline = jokeapi_json[i].punchline
-            jokes.textContent="Setup: " + jokeSetup + " Answer: " + answer 
-            //joke.textContent = "Setup: " + jokeSetup
-            //answer.textContent = "Answer: " + answer
+            let jokeSetup = jokeapi_json[i].setup
+            let jokePunchline = jokeapi_json[i].punchline
+            jokes.textContent+= "Setup: " + jokeSetup + "\n" + " Answer: " + jokePunchline + "\n\n"
             i++
         }
     }
