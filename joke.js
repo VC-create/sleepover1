@@ -82,13 +82,12 @@ async function check(){
         //so together its like [{}, {}, {}]
         //so when you have [], its already in the array, then it just has to access the object at the index
         //i = index, which object it needs to access
-        let i=0
+        let i=1
         while (i<number){
             let jokeSetup = jokeapi_json[i].setup
             let jokePunchline = jokeapi_json[i].punchline
             jokes.innerHTML+= 
-                "Setup: " + jokeSetup
-                " Answer: " + jokePunchline + "<br>"
+                i+ ".<br>Setup: " + jokeSetup + "<br>" + " Answer: " + jokePunchline + "<br><br>"
             i++
         }
     }

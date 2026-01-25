@@ -126,15 +126,17 @@ button{
     font-family:fantasy;
 }
 
-#random{
-    color:black;
-    background-color:white;
-    width:47%;
-}
 
 #manyJokes{
-    background-color:white;
     color:black;
     padding:10px;
-    margin-top:40px;
+    margin-top:10px;
+    text-align:center;
+    width:60%;
+    margin-left:20%;
+    font-size:30px;
+}
+
+.random{
+    background-color:lightblue;
 }
