@@ -64,11 +64,8 @@ function switchPage(){
 
 async function check(){
     const number = Number(document.querySelector('input').value)
-    if (number >= 100){
-        alert("Please pick a number less than 100")
-    }
-    else if (number==0){
-        alert("Please pick a number greater than 0")
+    if (number >= 100 || number==0){
+        alert("Please pick a valid number, greater than 0 and less than 100.")
     }
     else if(Number.isFinite(number)){
         const jokes = document.getElementById('manyJokes')
