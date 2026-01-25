@@ -61,3 +61,28 @@ function switchPage(){
     window.location.href = 'random.html';
         
 }
+
+async function check(){
+    const number = document.querySelector('input')
+    if(Number.isFinite(number)){
+        if (number > 100){
+        alert("Please pick a number less than 100")
+        }
+        if (number==0){
+            alert("Please pick a number greater than 0")
+        }
+        const jokeapi_call = await fetch("https://official-joke-api.appspot.com/jokes/random/" + number)
+        const jokeapi_json = await jokeapi_call.json()
+        const jokeSetup = jokeapi_json[0].setup
+        const jokePunchline = jokeapi_json[0].punchline
+    
+        const joke = document.getElementById("jokeSetup")
+        joke.textContent = "Setup: " + jokeSetup
+
+        const answer = document.getElementById("jokePunchline")
+        answer.textContent = "Answer: " + jokePunchline
+    }
+    else{
+        alert("Please enter a valid number")
+    }
+}
