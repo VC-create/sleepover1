@@ -93,11 +93,14 @@ async function check(){
     }
 }
 
+function getInput(type){
+    return type+"0"
+}
 
 async function checkType(type){
     const jokes = document.getElementById(type)
     jokes.innerHTML = " "
-    const number = Math.trunc(Number(document.getElementById(type+"0").value))
+    const number = Math.trunc(Number(document.getElementById(getInput(type)).value))
     if (number >= 100 || number==0 || number<0){
         alert("Please pick a valid number, greater than 0 and less than 100.")
     }
@@ -112,7 +115,7 @@ async function checkType(type){
         //so when you have [], its already in the array, then it just has to access the object at the index
         //i = index, which object it needs to access
         let i=0
-        while (i<=number){
+        while (i< jokeapi_json.length){
             let jokeSetup = jokeapi_json[i].setup
             let jokePunchline = jokeapi_json[i].punchline
             jokes.innerHTML+= 
