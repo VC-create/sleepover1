@@ -143,5 +143,11 @@ button{
 
 .grid{
     display:grid;
-    grid-template-columns: auto auto auto auto auto;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    padding:10px;
+}
+
+.grid h3{
+    width: 60%;
+    margin-left:20%;
 }
