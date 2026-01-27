@@ -92,3 +92,36 @@ async function check(){
         alert("Please enter a valid number")
     }
 }
+
+
+async function checkType(type){
+    const jokes = document.getElementById(type)
+    jokes.innerHTML = " "
+    const number = Math.trunc(Number(document.getElementById(type+"0").value))
+    if (number >= 100 || number==0 || number<0){
+        alert("Please pick a valid number, greater than 0 and less than 100.")
+    }
+    else if(Number.isFinite(number)){
+        const jokeapi_call = await fetch("https://official-joke-api.appspot.com/jokes/" + type + "/" + number)
+        const jokeapi_json = await jokeapi_call.json()
+        
+        //basically the jokes are in an array
+        //an array is denoted like []
+        //then the array has objects like {}
+        //so together its like [{}, {}, {}]
+        //so when you have [], its already in the array, then it just has to access the object at the index
+        //i = index, which object it needs to access
+        let i=0
+        while (i<=number){
+            let jokeSetup = jokeapi_json[i].setup
+            let jokePunchline = jokeapi_json[i].punchline
+            jokes.innerHTML+= 
+                (i+1) + ".<br>Setup: " + jokeSetup + "<br>" + " Answer: " + jokePunchline + "<br><br>"
+            i++
+        }
+    }
+    else{
+        alert("Please enter a valid number")
+    }
+}
+
