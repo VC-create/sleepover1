@@ -101,10 +101,15 @@ async function checkType(type){
     const jokes = document.getElementById(type)
     jokes.innerHTML = " "
     const number = Math.trunc(Number(document.getElementById(getInput(type)).value))
-    if (number >= 100 || number==0 || number<0){
+    console.log(number)
+    if (!Number.isFinite(number)){
+        alert("Please enter a valid number")
+        
+    }
+    else if(number >= 100 || number==0 || number<0){
         alert("Please pick a valid number, greater than 0 and less than 100.")
     }
-    else if(Number.isFinite(number)){
+    else{
         const jokeapi_call = await fetch("https://official-joke-api.appspot.com/jokes/" + type + "/" + number)
         const jokeapi_json = await jokeapi_call.json()
         
@@ -122,9 +127,6 @@ async function checkType(type){
                 (i+1) + ".<br>Setup: " + jokeSetup + "<br>" + " Answer: " + jokePunchline + "<br><br>"
             i++
         }
-    }
-    else{
-        alert("Please enter a valid number")
     }
 }
 
