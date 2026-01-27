@@ -98,26 +98,33 @@ function getInput(type){
 }
 
 async function checkType(type){
+    //remember, each div where we're going to display the jokes is categorized by type
     const jokes = document.getElementById(type)
     jokes.innerHTML = " "
+    //super important line! calls the getInput function and just adds a 0 to type because that's the name of it
     const number = Math.trunc(Number(document.getElementById(getInput(type)).value))
     //to keep track of which jokes has gone so that it doesn't repeat
     const usedIds = []
 
     if (!Number.isFinite(number)){
+        //this means that it's not a number at all and could be text or a character
         alert("Please enter a valid number")
         
     }
     else if(number >= 100 || number==0 || number<0){
+        //it is a number, but the number is too big or too small
         alert("Please pick a valid number, greater than 0 and less than 100.")
     }
     else{
         let i=0
         while (i<number){
+            //recall the api to get a different joke each time
             const jokeapi_call = await fetch("https://official-joke-api.appspot.com/jokes/" + type + "/random")
             const jokeapi_json = await jokeapi_call.json()
+            //store the joke id and check if it is in the used ids
             let jokeId = jokeapi_json[0].id
             if(!usedIds.includes(jokeId)){
+                //if it's not in usedids, add it so that it can't be used again
                 usedIds.push(jokeId)
                 let jokeSetup = jokeapi_json[0].setup
                 let jokePunchline = jokeapi_json[0].punchline
@@ -125,7 +132,8 @@ async function checkType(type){
                 (i+1) + ".<br>Setup: " + jokeSetup + "<br>" + " Answer: " + jokePunchline + "<br><br>"
                 i++
             }
-            
+            //don't need an else because if the joke id IS in usedIds, then it will just not do the if and will go back to 
+            //the top and fetch another joke. so it will just avoid the if all together.
         }
     }
 }
