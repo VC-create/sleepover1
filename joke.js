@@ -110,19 +110,13 @@ async function checkType(type){
         alert("Please pick a valid number, greater than 0 and less than 100.")
     }
     else{
-        const jokeapi_call = await fetch("https://official-joke-api.appspot.com/jokes/" + type + "/" + number)
-        const jokeapi_json = await jokeapi_call.json()
-        
-        //basically the jokes are in an array
-        //an array is denoted like []
-        //then the array has objects like {}
-        //so together its like [{}, {}, {}]
-        //so when you have [], its already in the array, then it just has to access the object at the index
-        //i = index, which object it needs to access
         let i=0
-        while (i< jokeapi_json.length){
-            let jokeSetup = jokeapi_json[i].setup
-            let jokePunchline = jokeapi_json[i].punchline
+        while (i<number){
+            const jokeapi_call = await fetch("https://official-joke-api.appspot.com/jokes/" + type + "/random")
+            const jokeapi_json = await jokeapi_call.json()
+
+            let jokeSetup = jokeapi_json[0].setup
+            let jokePunchline = jokeapi_json[0].punchline
             jokes.innerHTML+= 
                 (i+1) + ".<br>Setup: " + jokeSetup + "<br>" + " Answer: " + jokePunchline + "<br><br>"
             i++
