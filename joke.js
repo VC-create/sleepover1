@@ -101,7 +101,9 @@ async function checkType(type){
     const jokes = document.getElementById(type)
     jokes.innerHTML = " "
     const number = Math.trunc(Number(document.getElementById(getInput(type)).value))
-    console.log(number)
+    //to keep track of which jokes has gone so that it doesn't repeat
+    const usedIds = []
+
     if (!Number.isFinite(number)){
         alert("Please enter a valid number")
         
@@ -114,12 +116,16 @@ async function checkType(type){
         while (i<number){
             const jokeapi_call = await fetch("https://official-joke-api.appspot.com/jokes/" + type + "/random")
             const jokeapi_json = await jokeapi_call.json()
-
-            let jokeSetup = jokeapi_json[0].setup
-            let jokePunchline = jokeapi_json[0].punchline
-            jokes.innerHTML+= 
+            let jokeId = jokeapi_json[0].id
+            if(!usedIds.includes(jokeId)){
+                usedIds.push(jokeId)
+                let jokeSetup = jokeapi_json[0].setup
+                let jokePunchline = jokeapi_json[0].punchline
+                jokes.innerHTML+= 
                 (i+1) + ".<br>Setup: " + jokeSetup + "<br>" + " Answer: " + jokePunchline + "<br><br>"
-            i++
+                i++
+            }
+            
         }
     }
 }
