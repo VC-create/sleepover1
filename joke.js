@@ -58,18 +58,21 @@ async function getJoke(type){
 }
 
 function switchPage(){
+    //for the compass!
     window.location.href = 'random.html';
-        
 }
 
 async function check(){
     const jokes = document.getElementById('manyJokes')
     jokes.innerHTML = " "
     const number = Math.trunc(Number(document.querySelector('input').value))
-    if (number >= 100 || number==0 || number<0){
+    if (!Number.isFinite(number)){
+        alert("Please enter a valid number")
+    }
+    else if(number >= 100 || number==0 || number<0){
         alert("Please pick a valid number, greater than 0 and less than 100.")
     }
-    else if(Number.isFinite(number)){
+    else{
         const jokeapi_call = await fetch("https://official-joke-api.appspot.com/jokes/random/" + number)
         const jokeapi_json = await jokeapi_call.json()
         
@@ -88,9 +91,6 @@ async function check(){
             i++
         }
     }
-    else{
-        alert("Please enter a valid number")
-    }
 }
 
 function getInput(type){
@@ -106,15 +106,19 @@ async function checkType(type){
     //to keep track of which jokes has gone so that it doesn't repeat
     const usedIds = []
 
+    //want to start with this. it will narrow it down the most. if it's not a number, just get it out of the way
     if (!Number.isFinite(number)){
         //this means that it's not a number at all and could be text or a character
         alert("Please enter a valid number")
         
     }
+    //then if it is a number, but it's wrong, you don't want that either
     else if(number >= 100 || number==0 || number<0){
         //it is a number, but the number is too big or too small
         alert("Please pick a valid number, greater than 0 and less than 100.")
     }
+    //save the api for the end. because you don't want it to run unless the input is actually valid
+    //first check invalid input, then out of range input, then finally fall back onto the right thing
     else{
         let i=0
         while (i<number){
