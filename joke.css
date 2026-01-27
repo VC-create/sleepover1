@@ -140,3 +140,8 @@ button{
 .random{
     background-color:lightblue;
 }
+
+.grid{
+    display:grid;
+    grid-template-columns: auto auto auto auto auto;
+}
