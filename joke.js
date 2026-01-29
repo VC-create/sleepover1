@@ -71,10 +71,13 @@ function viewFavs(){
     window.location.href='favorite.html'
     const likedJokesPage = document.getElementById("showLikedJokes")
     let likedJokes = JSON.parse(localStorage.getItem("likedJokes"))
-    for(let i=0;i<likedJokes.length;i++){
-        likedJokesPage.innerHTML+= 
-            ".<br>Setup: " + likedJokes[i].setup + "<br>" + " Answer: " + likedJokes[i].punchline + "<br><br>"
-        i++
+    if(!likedJokes){alert("There are no jokes favorited!")}
+    else{
+        for(let i=0;i<likedJokes.length;i++){
+            likedJokesPage.innerHTML+= 
+                ".<br>Setup: " + likedJokes[i].setup + "<br>" + " Answer: " + likedJokes[i].punchline + "<br><br>"
+            i++
+        }
     }
 }
 
