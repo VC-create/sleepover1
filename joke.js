@@ -120,6 +120,13 @@ async function checkType(type){
     //save the api for the end. because you don't want it to run unless the input is actually valid
     //first check invalid input, then out of range input, then finally fall back onto the right thing
     else{
+        const random = Math.floor(Math.random()*3+1)
+        const img = document.getElementById("surprise")
+        if(random==3){
+            img.src="images/surprise.png"
+            timer = setTimeout(() => img.src = "", 1500)
+        }
+
         let i=0
         while (i<number){
             //recall the api to get a different joke each time

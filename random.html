@@ -15,10 +15,14 @@
             <!--Cyprus Boats-->
             <img src="images/boat.webp" height="300px" width="400px" ></img>
         </div>
+        <p>*if you enter more jokes than the API has, it will just give you all the jokes it has</p>
+        <p>Ex: There's only 2 dad jokes, so even if you type 4, it will give you just the two to avoid repeats</p>
         <div class="grid">
             <div>
                 <h3>Enter the number of random jokes you want in the textbox below, greater than 0 and less than 100. Decimals are truncated.</h3>
                 <input type="text"></input>
+                <!--reddit-->
+                <img id="surprise"></img>
                 <button onclick="check()">Enter</button>
                 <div id="manyJokes"></div>
             </div>
@@ -26,27 +30,34 @@
                 <h3>Enter the number of random programming jokes you want in the textbox below, greater than 0 and less than 100. Decimals are truncated.</h3>
                 <input id="programming0" type="text"></input>
                 <button onclick="checkType('programming')">Enter</button>
+                <!--reddit-->
+                <img id="surprise"></img>
                 <div id="programming"></div>
             </div>
             <div>
                 <h3>Enter the number of random knock-knock jokes you want in the textbox below, greater than 0 and less than 100. Decimals are truncated.</h3>
                 <input id="knock-knock0" type="text"></input>
                 <button onclick="checkType('knock-knock')">Enter</button>
+                <!--reddit-->
+                <img id="surprise"></img>
                 <div id="knock-knock"></div>
             </div>
             <div>
                 <h3>Enter the number of random general jokes you want in the textbox below, greater than 0 and less than 100. Decimals are truncated.</h3>
                 <input id="general0" type="text"></input>
                 <button onclick="checkType('general')">Enter</button>
+                <!--reddit-->
+                <img id="surprise"></img>
                 <div id="general"></div>
             </div>
             <div>
                 <h3>Enter the number of random dad jokes you want in the textbox below, greater than 0 and less than 100. Decimals are truncated.</h3>
                 <input id="dad0" type="text"></input>
                 <button onclick="checkType('dad')">Enter</button>
+                <!--reddit-->
+                <img id="surprise"></img>
                 <div id="dad"></div>
             </div>
         </div>
-        <!--<img src="raggeti"></img>-->
     </body>
 </html>
