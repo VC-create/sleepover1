@@ -76,9 +76,12 @@ async function check(){
         alert("Please pick a valid number, greater than 0 and less than 100.")
     }
     else{
-        const jokeapi_call = await fetch("https://official-joke-api.appspot.com/jokes/random/" + number)
-        const jokeapi_json = await jokeapi_call.json()
-        
+        const random = Math.floor(Math.random()*3+1)
+        const img = document.getElementById("surprise")
+        if(random==3){
+            img.src="images/surprise.png"
+            timer = setTimeout(() => img.src = "", 1500)
+        }
         //basically the jokes are in an array
         //an array is denoted like []
         //then the array has objects like {}
@@ -87,6 +90,8 @@ async function check(){
         //i = index, which object it needs to access
         let i=0
         while (i<=number){
+            const jokeapi_call = await fetch("https://official-joke-api.appspot.com/jokes/random/" + number)
+            const jokeapi_json = await jokeapi_call.json()
             let jokeSetup = jokeapi_json[i].setup
             let jokePunchline = jokeapi_json[i].punchline
             jokes.innerHTML+= 
@@ -99,6 +104,23 @@ async function check(){
 function getInput(type){
     return type+"0"
 }
+
+function getImgId(type){
+    if(type=="programming"){
+        return "surprise1"
+    }
+    else if(type=="knock-knock"){
+        return "surprise2"
+    }
+    else if(type=="general"){
+        return "surprise3"
+    }
+    else{
+        return "surprise4"
+    }
+}
+
+
 
 async function checkType(type){
     //remember, each div where we're going to display the jokes is categorized by type
@@ -125,7 +147,7 @@ async function checkType(type){
     else{
         //for a random image to pop up 
         const random = Math.floor(Math.random()*3+1)
-        const img = document.getElementById("surprise")
+        const img = document.getElementById(getImgId(type))
         if(random==3){
             img.src="images/surprise.png"
             timer = setTimeout(() => img.src = "", 1500)
