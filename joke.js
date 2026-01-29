@@ -31,10 +31,15 @@ async function showJoke(){
     //change the text of that element to have the jokepunchline
     timer = setTimeout(() => 
         {answer.textContent = "Answer: " + jokePunchline
+        //create a joke object to store the current joke. it has the setup and punchline just like how 
+        //the joke api has it. 
         const currentJoke = {setup: jokeSetup, punchline: jokePunchline}
         //if the joke isn't already liked, the button will appear
+        //if the joke is liked, then the button won't appear
         if(!isJokeLiked(currentJoke)){
             likeButton.style.display="block"
+            //need this extra =()=> because you want it to not happen instantaneously, need it to wait and always be 
+            //ready to be clicked
             likeButton.onclick=()=>like(currentJoke)}
         }, 1500)
 
@@ -51,23 +56,27 @@ function like(currentJoke){
     //but to set the item, you have to make it a string because localStorage can only store strings
     localStorage.setItem("likedJokes", JSON.stringify(likedJokes))
 
-    //make the button dissapear after you click it once for that joke
+    //make the button dissapear after you click it once for that joke so that you can't click it again and mess something up
     document.getElementById("likeButton").style.display="none"
 }
 
 function isJokeLiked(currentJoke){
     //this is a variable referencing the same likedJokes data
     let likedJokes = JSON.parse(localStorage.getItem("likedJokes"))
+    //if likedJokes doesn't exist its false
     if(!likedJokes){return false}
+    //check if it equals anything already there, if it does, return true and the if in the previous function won't run
     for (let i=0;i<likedJokes.length;i++){
         if(likedJokes[i].setup == currentJoke.setup && likedJokes[i].punchline==currentJoke.punchline){
             return true
         }
     }
+    //if it's not in the array, return false. that means its good to go, this is a new joke that hasn't been liked yet
     return false
 }
 
 function viewFavs(){
+    //relocate to favorites page
     window.location.href='favorite.html'
     const likedJokesPage = document.getElementById("showLikedJokes")
     let likedJokes = JSON.parse(localStorage.getItem("likedJokes"))
