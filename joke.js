@@ -1,5 +1,6 @@
 let timer
 
+//for the joke page with the pictures 
 async function showJoke(){
     //this clears any timer that's running so that the punchline won't show up
     //makes it so that any punchline that was going to show up, let's say from a different image, won't show up anymore
@@ -62,6 +63,8 @@ function switchPage(){
     window.location.href = 'random.html';
 }
 
+
+//for the random page 
 async function check(){
     const jokes = document.getElementById('manyJokes')
     jokes.innerHTML = " "
