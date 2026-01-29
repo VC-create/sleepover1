@@ -1,12 +1,15 @@
 let timer
+let currentJoke = null
 
-//for the joke page with the pictures 
+
+//for the joke page medallion
 async function showJoke(){
     //this clears any timer that's running so that the punchline won't show up
     //makes it so that any punchline that was going to show up, let's say from a different image, won't show up anymore
     if (timer){
         clearTimeout(timer)
     }
+    const likeButton = document.getElementById("likeButton")
     //get the joke from the api and need to turn the raw data into json
     //need to turn it into json because you can't work with it in its raw form
     const jokeapi_call = await fetch("https://official-joke-api.appspot.com/random_joke")
@@ -28,11 +31,20 @@ async function showJoke(){
     answer.textContent = "Answer: "
     //have a variable that represents the jokepunchline, called answer
     //change the text of that element to have the jokepunchline
-    timer = setTimeout(() => answer.textContent = "Answer: " + jokePunchline, 1500)
+    timer = setTimeout(() => 
+        {answer.textContent = "Answer: " + jokePunchline
+        currentJoke = jokeSetup + jokePunchline
+        if(!isJokeLiked(currentJoke)){
+            likeButton.style.display="block"}
+        }, 1500)
 
 }
 
-//for the joke page and the characters
+function like(jokeSetup, jokePunchline){
+    localStorage.setItem(jokeId, jokeSetup + jokePunchline)
+}
+
+//for the joke page characters
 async function getJoke(type){
     if (timer){
         clearTimeout(timer)
@@ -183,4 +195,3 @@ async function checkType(type){
         }
     }
 }
-

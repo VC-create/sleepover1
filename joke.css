@@ -156,3 +156,13 @@ button{
     margin-left:20%;
 }
 
+button-like{
+    margin-top:10px;
+    display:block;
+    justify-content: center;
+    font-size:10px;
+    background-color:white;
+    color:black;
+    font-family:fantasy;
+    width:30%;
+}
