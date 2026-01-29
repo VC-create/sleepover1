@@ -32,6 +32,7 @@ async function showJoke(){
 
 }
 
+//for the joke page and the characters
 async function getJoke(type){
     if (timer){
         clearTimeout(timer)
@@ -64,11 +65,13 @@ function switchPage(){
 }
 
 
-//for the random page 
+//for the random page, getting many jokes, not by type
 async function check(){
     const jokes = document.getElementById('manyJokes')
     jokes.innerHTML = " "
+    //this makes it so that if the user inputted a decimal, it truncates it
     const number = Math.trunc(Number(document.querySelector('input').value))
+    //if it's not a number, then it will have the alert
     if (!Number.isFinite(number)){
         alert("Please enter a valid number")
     }
@@ -101,10 +104,12 @@ async function check(){
     }
 }
 
+//this is to get the id of the input box for the checkType function
 function getInput(type){
     return type+"0"
 }
 
+//this returns the image id for the random image pop up
 function getImgId(type){
     if(type=="programming"){
         return "surprise1"
@@ -120,8 +125,17 @@ function getImgId(type){
     }
 }
 
+//the img pop up for checkType only
+function imgPopUp(type){
+    const random = Math.floor(Math.random()*5+1)
+    const img = document.getElementById(getImgId(type))
+    if(random==3){
+        img.src="images/surprise.png"
+        timer = setTimeout(() => img.src = "", 2000)
+    }
+}
 
-
+//for the random page 
 async function checkType(type){
     //remember, each div where we're going to display the jokes is categorized by type
     const jokes = document.getElementById(type)
@@ -146,12 +160,7 @@ async function checkType(type){
     //first check invalid input, then out of range input, then finally fall back onto the right thing
     else{
         //for a random image to pop up 
-        const random = Math.floor(Math.random()*3+1)
-        const img = document.getElementById(getImgId(type))
-        if(random==3){
-            img.src="images/surprise.png"
-            timer = setTimeout(() => img.src = "", 1500)
-        }
+        imgPopUp(type)
 
         let i=0
         while (i<number){
