@@ -123,6 +123,7 @@ async function checkType(type){
     //save the api for the end. because you don't want it to run unless the input is actually valid
     //first check invalid input, then out of range input, then finally fall back onto the right thing
     else{
+        //for a random image to pop up 
         const random = Math.floor(Math.random()*3+1)
         const img = document.getElementById("surprise")
         if(random==3){
