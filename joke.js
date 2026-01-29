@@ -1,6 +1,4 @@
 let timer
-let currentJoke = null
-
 
 //for the joke page medallion
 async function showJoke(){
@@ -33,15 +31,51 @@ async function showJoke(){
     //change the text of that element to have the jokepunchline
     timer = setTimeout(() => 
         {answer.textContent = "Answer: " + jokePunchline
-        currentJoke = jokeSetup + jokePunchline
+        const currentJoke = {setup: jokeSetup, punchline: jokePunchline}
+        //if the joke isn't already liked, the button will appear
         if(!isJokeLiked(currentJoke)){
-            likeButton.style.display="block"}
+            likeButton.style.display="block"
+            likeButton.onclick=()=>like(currentJoke)}
         }, 1500)
 
 }
 
-function like(jokeSetup, jokePunchline){
-    localStorage.setItem(jokeId, jokeSetup + jokePunchline)
+function like(currentJoke){
+    //this gets likedJokes and turns it from a string into an array. 
+    //if likedJokes doesn't exist, it creates it
+    let likedJokes = JSON.parse(localStorage.getItem("likedJokes"))
+    if(!likedJokes){likedJokes = []}
+
+    //since likedJokes is an array, you can add currentJoke to it
+    likedJokes.push(currentJoke)
+    //but to set the item, you have to make it a string because localStorage can only store strings
+    localStorage.setItem("likedJokes", JSON.stringify(likedJokes))
+
+    //make the button dissapear after you click it once for that joke
+    document.getElementById("likeButton").style.display="none"
+}
+
+function isJokeLiked(currentJoke){
+    //this is a variable referencing the same likedJokes data
+    let likedJokes = JSON.parse(localStorage.getItem("likedJokes"))
+    if(!likedJokes){return false}
+    for (let i=0;i<likedJokes.length;i++){
+        if(likedJokes[i].setup == currentJoke.setup && likedJokes[i].punchline==currentJoke.punchline){
+            return true
+        }
+    }
+    return false
+}
+
+function viewFavs(){
+    window.location.href='favorite.html'
+    const likedJokesPage = document.getElementById("showLikedJokes")
+    let likedJokes = JSON.parse(localStorage.getItem("likedJokes"))
+    for(let i=0;i<likedJokes.length;i++){
+        likedJokesPage.innerHTML+= 
+            ".<br>Setup: " + likedJokes[i].setup + "<br>" + " Answer: " + likedJokes[i].punchline + "<br><br>"
+        i++
+    }
 }
 
 //for the joke page characters
