@@ -14,7 +14,7 @@
             else{
                 for(let i=0;i<likedJokes.length;i++){
                     likedJokesPage.innerHTML+= 
-                        ".<br>Setup: " + likedJokes[i].setup + "<br>" + " Answer: " + likedJokes[i].punchline + "<br><br>"
+                        (i+1) + ".<br>Setup: " + likedJokes[i].setup + "<br>" + " Answer: " + likedJokes[i].punchline + "<br><br>"
                 }
             }
         })
@@ -23,6 +23,8 @@
     <body class="joke">
         <link rel="stylesheet" href="joke.css">
         <script src="joke.js"></script>
+
+        <h3 style="font-size:40px;">Here are all your favorite jokes!</h3>
         
         <div id="showLikedJokes"></div>
     </body>

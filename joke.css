@@ -137,6 +137,7 @@ button{
     font-size:20px;
 }
 
+/*for the random page*/
 .random{
     background-color:lightblue;
 }
@@ -154,4 +155,12 @@ button{
 .grid h3, button{
     width: 60%;
     margin-left:20%;
+}
+
+#showLikedJokes{
+    background-color:white;
+    width:60%;
+    margin-left:20%; 
+    color:black;
+    text-align:center;
 }
