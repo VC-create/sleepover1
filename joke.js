@@ -10,6 +10,7 @@ async function showJoke(){
     const likeButton = document.getElementById("likeButton")
     //get the joke from the api and need to turn the raw data into json
     //need to turn it into json because you can't work with it in its raw form
+    try{
     const jokeapi_call = await fetch("https://official-joke-api.appspot.com/random_joke")
     const jokeapi_json = await jokeapi_call.json()
     
@@ -42,6 +43,9 @@ async function showJoke(){
             //ready to be clicked
             likeButton.onclick=()=>like(currentJoke)}
         }, 1500)
+    }catch(error){
+        alert("You exceeded the number of requests allowed! Please try again in 15 minutes.")
+    }
 
 }
 
@@ -84,6 +88,7 @@ async function getJoke(type){
     if (timer){
         clearTimeout(timer)
     }
+    try{
     const jokeapi_call = await fetch("https://official-joke-api.appspot.com/jokes/" + type + "/random")
     const jokeapi_json = await jokeapi_call.json()
 
@@ -103,7 +108,10 @@ async function getJoke(type){
     //here, function = "() => answer.textContent = jokePunchline"
     //don't need brackets because it's a single line
     //delay = 2000
-   timer = setTimeout(() => answer.textContent = "Answer: " + jokePunchline, 1500)
+    timer = setTimeout(() => answer.textContent = "Answer: " + jokePunchline, 1500)
+    } catch(error){
+        alert("You exceeded the number of requests allowed! Please try again in 15 minutes.")
+    }
 }
 
 function switchPage(){
@@ -140,14 +148,21 @@ async function check(){
         //i = index, which object it needs to access
         let i=0
         while (i<=number){
-            const jokeapi_call = await fetch("https://official-joke-api.appspot.com/jokes/random/" + number)
-            const jokeapi_json = await jokeapi_call.json()
-            let jokeSetup = jokeapi_json[i].setup
-            let jokePunchline = jokeapi_json[i].punchline
-            jokes.innerHTML+= 
-                (i+1) + ".<br>Setup: " + jokeSetup + "<br>" + " Answer: " + jokePunchline + "<br><br>"
-            i++
+            try{
+                const jokeapi_call = await fetch("https://official-joke-api.appspot.com/jokes/random/" + number)
+                const jokeapi_json = await jokeapi_call.json()
+                let jokeSetup = jokeapi_json[i].setup
+                let jokePunchline = jokeapi_json[i].punchline
+                jokes.innerHTML+= 
+                    (i+1) + ".<br>Setup: " + jokeSetup + "<br>" + " Answer: " + jokePunchline + "<br><br>"
+                i++
+            }
+            catch(error){
+                alert("You exceeded the number of requests allowed! Please try again in 15 minutes.")
+                break
+            }
         }
+        
     }
 }
 
@@ -211,6 +226,7 @@ async function checkType(type){
 
         let i=0
         while (i<number){
+            try{
             //recall the api to get a different joke each time
             const jokeapi_call = await fetch("https://official-joke-api.appspot.com/jokes/" + type + "/random")
             const jokeapi_json = await jokeapi_call.json()
@@ -225,6 +241,10 @@ async function checkType(type){
                 (i+1) + ".<br>Setup: " + jokeSetup + "<br>" + " Answer: " + jokePunchline + "<br><br>"
                 i++
             }
+        }catch(error){
+            alert("You exceeded the number of requests allowed! Please try again in 15 minutes.")
+            break
+        }
             //don't need an else because if the joke id IS in usedIds, then it will just not do the if and will go back to 
             //the top and fetch another joke. so it will just avoid the if all together.
         }
