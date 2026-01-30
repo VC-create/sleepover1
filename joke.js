@@ -74,20 +74,9 @@ function isJokeLiked(currentJoke){
     //if it's not in the array, return false. that means its good to go, this is a new joke that hasn't been liked yet
     return false
 }
-
 function viewFavs(){
-    //relocate to favorites page
+    //relocate to favorites page for the button that goes to favorites 
     window.location.href='favorite.html'
-    const likedJokesPage = document.getElementById("showLikedJokes")
-    let likedJokes = JSON.parse(localStorage.getItem("likedJokes"))
-    if(!likedJokes){alert("There are no jokes favorited!")}
-    else{
-        for(let i=0;i<likedJokes.length;i++){
-            likedJokesPage.innerHTML+= 
-                ".<br>Setup: " + likedJokes[i].setup + "<br>" + " Answer: " + likedJokes[i].punchline + "<br><br>"
-            i++
-        }
-    }
 }
 
 //for the joke page characters

@@ -5,6 +5,20 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Jokes</title>
         <link rel="icon" type="image/x-icon" href="images/favicon.png">
+        <script>
+        //once it loads, add all the favorite jokes
+        document.addEventListener("DOMContentLoaded", ()=>{
+            const likedJokesPage = document.getElementById("showLikedJokes")
+            let likedJokes = JSON.parse(localStorage.getItem("likedJokes"))
+            if(!likedJokes){alert("There are no jokes favorited!")}
+            else{
+                for(let i=0;i<likedJokes.length;i++){
+                    likedJokesPage.innerHTML+= 
+                        ".<br>Setup: " + likedJokes[i].setup + "<br>" + " Answer: " + likedJokes[i].punchline + "<br><br>"
+                }
+            }
+        })
+        </script>
     </head>
     <body class="joke">
         <link rel="stylesheet" href="joke.css">
