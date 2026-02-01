@@ -147,7 +147,7 @@ async function check(){
         //so when you have [], its already in the array, then it just has to access the object at the index
         //i = index, which object it needs to access
         let i=0
-        while (i<=number){
+        while (i<number){
             try{
                 const jokeapi_call = await fetch("https://official-joke-api.appspot.com/jokes/random/" + number)
                 const jokeapi_json = await jokeapi_call.json()
